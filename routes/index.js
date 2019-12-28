@@ -6,4 +6,5 @@ router.get('/', function(req, res, next) {
   res.render('blank');
 });
 router.get('/statistic',controllerRequest.request)
+router.get('/list',controllerRequest.list)
 module.exports = router;
