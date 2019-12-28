@@ -1,4 +1,5 @@
  request = require('request');
+ const DB = require('./DB')
 var statistic  = {
   rate:0,
   difficulty:0,
@@ -41,6 +42,7 @@ var statistic  = {
           last_year:0
   },
 }
+
 exports.request = function (req,res) {
 let promise = new Promise(function(resolve, reject) {
   request('http://sha256.p2p-spb.xyz:9338/rate', (err, response, rate) => {
@@ -161,4 +163,36 @@ let promise = new Promise(function(resolve, reject) {
 promise.then(function(statistic) {
   res.json(statistic)
 });
+}
+exports.list = function (req,res) {
+let   result = DB.listAlgoritm
+
+  function call(coin) {
+    request('http://p2p-ekb.xyz:'+coin.port+'/rate', (err, response, rate) => {
+    // if(err)
+    //   console.log(err,{port:coin.port});
+      coin.rate = rate
+      request('http://sha256.p2p-spb.xyz:'+coin.port+'/users', (err, response, users) => {
+      // if(err)
+      //   // console.log(err,{port:coin.port});
+        coin.users = users -1
+        request('http://sha256.p2p-spb.xyz:'+coin.port+'/fee', (err, response, fee) => {
+        // if(err)
+        //   // console.log(err,{port:coin.port});
+          coin.fee = fee
+          request('http://sha256.p2p-spb.xyz:'+coin.port+'/global_stats', (err, response, global_stats) => {
+          // if(err)
+          //   // console.log(err,{port:coin.port});
+            coin.global_stats = global_stats
+          });
+        });
+      });
+
+    });
+
+  }
+  for (let  i = 0; i < result.length; i++) {
+    call(result[i])
+  }
+  res.json(result)
 }
