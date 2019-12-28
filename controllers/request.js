@@ -194,5 +194,5 @@ let   result = DB.listAlgoritm
   for (let  i = 0; i < result.length; i++) {
     call(result[i])
   }
-  res.json(result)
+  res.render("blank",{result});
 }

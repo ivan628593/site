@@ -3,7 +3,7 @@
 <html>
   <head>
     <title>{{title}}</title>
-    
+
 <link rel='stylesheet' href='/stylesheets/main.min.css' />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
   <link rel="stylesheet" href="/stylesheets/theme.css" type="text/css">
@@ -38,10 +38,10 @@
      <table class="responsive">
        <thead>
          <tr>
-           <th>Валюта</th>
-           <th>Пул</th>
+           <th>Name</th>
+           <th>fullName</th>
            <th>Хешрейт пула</th>
-           <th>Удача</th>
+           <th>fee</th>
            <th>Статус</th>
            <th>Хешрейт сети</th>
            <th>Сложность сети</th>
@@ -49,26 +49,20 @@
          </tr>
        </thead>
        <tbody>
+         {{#each result}}
+         {{#if_eq algoritm 'SHA256D'}}
          <tr class="tr" onclick="window.location.href='#'; return false">
-           <td data-label="Валюта">1213</td>
-           <td data-label="Пул">Hamster fluffy</td>
-           <td data-label="Хешрейт пула">1</td>
-           <td data-label="Удача">$ 199.00</td>
-           <td data-label="Статус">$ 199.00</td>
-           <td data-label="Хешрейт сети">$ 199.00</td>
+           <td data-label="Name">{{name}}</td>
+           <td data-label="fullName">{{fullName}}</td>
+           <td data-label="Хешрейт пула">{{rate}}</td>
+           <td data-label="fee">{{fee}}</td>
+           <td data-label="Статус">gg</td>
+           <td data-label="Хешрейт сети">gg</td>
            <td data-label="Сложность сети">$ 199.00</td>
            <td data-label="Курс монет">$ 199.00</td>
-         </tr>
-         <tr class="tr" onclick="window.location.href='#'; return false">
-           <td data-label="Валюта">1213</td>
-           <td data-label="Пул">Hamster fluffy</td>
-           <td data-label="Хешрейт пула">1</td>
-           <td data-label="Удача">$ 199.00</td>
-           <td data-label="Статус">$ 199.00</td>
-           <td data-label="Хешрейт сети">$ 199.00</td>
-           <td data-label="Сложность сети">$ 199.00</td>
-           <td data-label="Курс монет">$ 199.00</td>
-         </tr>
+         </tr
+         {{/if_eq}}
+         {{/each}}>
        </tbody>
      </table>
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
