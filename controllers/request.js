@@ -166,7 +166,6 @@ promise.then(function(statistic) {
 }
 exports.list = function (req,res) {
 let   result = DB.listAlgoritm
-
   function call(coin) {
     request('http://p2p-ekb.xyz:'+coin.port+'/rate', (err, response, rate) => {
     // if(err)
@@ -194,5 +193,25 @@ let   result = DB.listAlgoritm
   for (let  i = 0; i < result.length; i++) {
     call(result[i])
   }
-  res.render("blank",{result});
+  var data = []
+  var buffer = []
+  var j = 0
+  var k = 0
+  var property = 'algoritm'
+  // buffer[j].algoritm = result[j].algoritm
+  for (var i = 0; i < result.length; i++) {
+    console.log(i);
+    buffer[k] = result[i]
+    k++
+    if(result[i+1] === undefined   ||  result[i].algoritm !== result[i+1].algoritm){
+        // data[j].algoritm = result[i].algoritm
+        // data[j].coins = buffer
+        data[j] = {algoritm:result[i].algoritm,coins:buffer}
+        j++;
+        k = 0
+        buffer = []
+        //data[j].algoritm = result[i+1].algoritm
+    }
+  }
+  res.render('example',{data})
 }
