@@ -213,5 +213,6 @@ let   result = DB.listAlgoritm
         //data[j].algoritm = result[i+1].algoritm
     }
   }
-  res.render('example',{data})
+  res.render('blank',{data})
+  //res.json(data);
 }

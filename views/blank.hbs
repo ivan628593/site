@@ -24,10 +24,13 @@
          </div>
        </div>
      </nav>
+
+     {{#each data}}
+
      <div class="container-fluid" style="">
        <div class="row">
          <div class="col-md-12">
-           <h1 class="pt-4 pb-0">SHA256D&nbsp;</h1>
+           <h1 class="pt-4 pb-0">{{algoritm}}&nbsp;</h1>
          </div>
        </div>
      </div>
@@ -49,22 +52,22 @@
          </tr>
        </thead>
        <tbody>
-         {{#each result}}
-         {{#if_eq algoritm 'SHA256D'}}
+        {{#each coins}}
          <tr>
            <td data-label="Name">{{name}}</td>
            <td data-label="fullName">{{fullName}}</td>
            <td data-label="Хешрейт пула">{{rate}}</td>
-           <td data-label="fee">{{fee}};;;</td>
-           <td data-label="Статус">gg</td>
-           <td data-label="Хешрейт сети">gg</td>
-           <td data-label="Сложность сети">$ 199.00</td>
-           <td data-label="Курс монет">$ 199.00</td>
-         </tr
-         {{/if_eq}}
-         {{/each}}>
+           <td data-label="fee">{{fee}}</td>
+           <td data-label="Статус">OK</td>
+           <td data-label="Хешрейт сети"></td>
+           <td data-label="Сложность сети"></td>
+           <td data-label="Курс монет"></td>
+         </tr>
+         {{/each}}
+
        </tbody>
      </table>
+     {{/each}}
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous" style=""></script>
