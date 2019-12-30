@@ -42,13 +42,13 @@
        <thead>
          <tr>
            <th>Name</th>
-           <th>fullName</th>
-           <th>Хешрейт пула</th>
+           <th>Full name</th>
+           <th>Pool hashrate</th>
            <th>fee</th>
-           <th>Статус</th>
-           <th>Хешрейт сети</th>
-           <th>Сложность сети</th>
-           <th>Курс монеты</th>
+           <th>Status</th>
+           <th>Network hashrate</th>
+           <th>Network diff</th>
+           <!-- <th>Курс монеты</th> -->
          </tr>
        </thead>
        <tbody>
@@ -56,12 +56,12 @@
          <tr>
            <td data-label="Name">{{name}}</td>
            <td data-label="fullName">{{fullName}}</td>
-           <td data-label="Хешрейт пула">{{rate}}</td>
+           <td data-label="Pool hashrate">{{rate}}</td>
            <td data-label="fee">{{fee}}</td>
-           <td data-label="Статус">OK</td>
-           <td data-label="Хешрейт сети">{{global_stats.pool_hash_rate}}</td>
-           <td data-label="Сложность сети">{{global_stats.network_block_difficulty}}</td>
-           <td data-label="Курс монет">????????</td>
+           <td data-label="Status">OK</td>
+           <td data-label="Network hashrate">{{global_stats.pool_hash_rate}}</td>
+           <td data-label="Network diff">{{global_stats.network_block_difficulty}}</td>
+           <!-- <td data-label="Курс монет">????????</td> -->
          </tr>
          {{/each}}
 
