@@ -14,6 +14,5 @@ Handlebars.registerHelper('if_eq', function(a, b, opts) {
     }
 });
 
-router.get('/statistic',controllerRequest.request)
 router.get('/list',controllerRequest.list)
 module.exports = router;

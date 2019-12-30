@@ -202,6 +202,9 @@ let   result = DB.listAlgoritm
   for (var i = 0; i < result.length; i++) {
     console.log(i);
     buffer[k] = result[i]
+    if(result[i].global_stats !==undefined){
+      result[i].global_stats= JSON.parse(result[i].global_stats)
+    }
     k++
     if(result[i+1] === undefined   ||  result[i].algoritm !== result[i+1].algoritm){
         // data[j].algoritm = result[i].algoritm
@@ -213,6 +216,6 @@ let   result = DB.listAlgoritm
         //data[j].algoritm = result[i+1].algoritm
     }
   }
+  res.json(data)
   res.render('blank',{data})
-  //res.json(data);
 }
