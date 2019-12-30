@@ -216,6 +216,6 @@ let   result = DB.listAlgoritm
         //data[j].algoritm = result[i+1].algoritm
     }
   }
-  res.json(data)
+//  res.json(data)
   res.render('blank',{data})
 }
