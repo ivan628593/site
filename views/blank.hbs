@@ -1,29 +1,6 @@
 
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>{{title}}</title>
 
-<link rel='stylesheet' href='/stylesheets/main.min.css' />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
-  <link rel="stylesheet" href="/stylesheets/theme.css" type="text/css">
-  </head>
-  <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-       <div class="container-fluid"> <a class="navbar-brand" href="#"><i class="fa d-inline fa-address-book-o fa-3x"></i>
-           <b> P2P-SPB</b>
-         </a> <button class="navbar-toggler navbar-toggler-right border-0" type="button" data-toggle="collapse" data-target="#navbar11">
-           <span class="navbar-toggler-icon"></span>
-         </button>
-         <div class="collapse navbar-collapse" id="navbar11">
-           <ul class="navbar-nav ml-auto">
-             <li class="nav-item"> <a class="nav-link" href="#">Pool</a> </li>
-             <li class="nav-item"> <a class="nav-link" href="#">Blog</a> </li>
-             <li class="nav-item"> <a class="nav-link" href="#">FAQ</a> </li>
-           </ul> <a class="btn btn-primary navbar-btn ml-md-2">Contact us</a>
-         </div>
-       </div>
-     </nav>
+<div class="mx-5">
 
      {{#each data}}
 
@@ -38,16 +15,19 @@
      </a>
      <a href="#">
      </a>
+
+
+
      <table class="responsive">
        <thead>
          <tr>
            <th>Name</th>
            <th>Full name</th>
-           <th>Pool hashrate</th>
+           <th>Pool <br>hashrate</th>
            <th>fee</th>
            <th>Status</th>
-           <th>Network hashrate</th>
-           <th>Network diff</th>
+           <th>Network <br>hashrate</th>
+           <th>Network <br> diff</th>
            <!-- <th>Курс монеты</th> -->
          </tr>
        </thead>
@@ -56,11 +36,11 @@
          <tr>
            <td data-label="Name">{{name}}</td>
            <td data-label="fullName">{{fullName}}</td>
-           <td data-label="Pool hashrate">{{rate}}</td>
+           <td data-label="Pool hashrate">{{num rate}}</td>
            <td data-label="fee">{{fee}}</td>
            <td data-label="Status">OK</td>
-           <td data-label="Network hashrate">{{global_stats.pool_hash_rate}}</td>
-           <td data-label="Network diff">{{global_stats.network_block_difficulty}}</td>
+           <td data-label="Network hashrate">{{num global_stats.pool_hash_rate}}</td>
+           <td data-label="Network diff">{{num global_stats.network_block_difficulty}}</td>
            <!-- <td data-label="Курс монет">????????</td> -->
          </tr>
          {{/each}}
@@ -68,13 +48,4 @@
        </tbody>
      </table>
      {{/each}}
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous" style=""></script>
-  <script>
-  $("tr").on('click',function(){
-    window.location.href='#'; return false
-  })
-  </script>
-</body>
-</html>
+   </div>
