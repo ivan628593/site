@@ -42,7 +42,9 @@ Handlebars.registerHelper('if_eq', function(a, b, opts) {
         return opts.inverse(this);
     }
 });
-Handlebars
+Handlebars.registerHelper('img', function(a){
+  return new Handlebars.SafeString("<img src = http://p2p-ekb.xyz:2942/static/image/"+a.toLowerCase() + ".png>");
+})
 
 router.get('/list',controllerRequest.list)
 module.exports = router;
