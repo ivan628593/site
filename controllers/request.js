@@ -1,4 +1,4 @@
- request = require('request');
+ const request = require('request');
  const DB = require('./DB')
 
 exports.list = function (req,res) {

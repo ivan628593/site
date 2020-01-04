@@ -5,6 +5,7 @@ var numeral = require('numeral');
 
 var router = express.Router();
 const controllerRequest = require('../controllers/request')
+const controllerCoinStatistic = require('../controllers/coinStatistic')
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('blank');
@@ -48,6 +49,6 @@ Handlebars.registerHelper('img', function(a){
 Handlebars.registerHelper('procent', function(a){
     return new Handlebars.SafeString(a+"%");
 });
-
+router.get('/coin/:id',controllerCoinStatistic.getCoinStatisticData)
 router.get('/list',controllerRequest.list)
 module.exports = router;

@@ -1,6 +1,6 @@
 module.exports.listAlgoritm  = [
   {
-    name: 'BTC',
+    name: 'Bitcoin',
     fullName: 'Bitcoin',
     algoritm: 'SHA256D',
     port:'9334',
