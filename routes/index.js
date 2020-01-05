@@ -53,5 +53,6 @@ Handlebars.registerHelper('procent', function(a){
     return new Handlebars.SafeString(a+"%");
 });
 router.get('/coin/:id',controllerCoinStatistic.getCoinStatisticData)
+router.get('/graphic/:id/period/:idPeriod',controllerCoinStatistic.graphic)
 router.get('/list',controllerRequest.list)
 module.exports = router;

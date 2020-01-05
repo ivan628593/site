@@ -21,12 +21,13 @@ exports.list = function (req,res) {
                     // if(err)
                     //   // console.log(err,{port:coin.port});
                       let result = {
-                        name:url.name,
-                        fullName:url.fullName,
-                        algoritm:url.algoritm,
+                        port: url.port,
+                        name: url.name,
+                        fullName: url.fullName,
+                        algoritm: url.algoritm,
                         rate: rate,
-                        users:users,
-                        fee:fee,
+                        users: users,
+                        fee: fee,
                         global_stats: global_stats
                       }
                       resolve(result)

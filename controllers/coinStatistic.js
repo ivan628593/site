@@ -32,19 +32,19 @@ exports.getCoinStatisticData = function (req,res) {
    })
 
  });
- promise[5] = new Promise(function(resolve, reject) {
-   request(`http://p2p-ekb.xyz:${coin.port}/web/graph_data/pool_rates/last_hour`, (err, response, graphic) => {
-     resolve({name:'graphic',value:graphic})
-   })
-
- });
+ // promise[5] = new Promise(function(resolve, reject) {
+ //   request(`http://p2p-ekb.xyz:${coin.port}/web/graph_data/pool_rates/last_hour`, (err, response, graphic) => {
+ //     resolve({name:'graphic',value:graphic})
+ //   })
+ //
+ // });
  Promise.all(promise).then(function (result) {
    let coinStatisticData = {}
    for (var i = 0; i < result.length; i++) {
      coinStatisticData[result[i].name] = result[i].value
    }
    coinStatisticData.local_stats = JSON.parse(coinStatisticData.local_stats)
-   coinStatisticData.graphic = JSON.parse(coinStatisticData.graphic)
+   // coinStatisticData.graphic = JSON.parse(coinStatisticData.graphic)
    coinStatisticData.port = coin.port
    coinStatisticData.fullName = coin.fullName
    coinStatisticData.algoritm = coin.algoritm
@@ -52,4 +52,19 @@ exports.getCoinStatisticData = function (req,res) {
 //   res.json(coinStatisticData)
    res.render('pool',{coinStatisticData})
  })
+}
+
+exports.graphic = (req,res) => {
+  period = ['last_hour','last_day','last_week','last_month','last_year']
+  let coins = DB.listAlgoritm
+  let coin = coins.find(item => item.port == req.params.id)
+    request(`http://p2p-ekb.xyz:${coin.port}/web/graph_data/pool_rates/${period[req.params.idPeriod]}`, (err, response, graphic) => {
+      graphic = JSON.parse(graphic)
+      graphic.splice(0,1)
+      for (var i = 0; i < graphic.length; i++) {
+        graphic[i][1] = graphic[i][1].good + graphic[i][1].doa
+        graphic[i].splice(2,2)
+      }
+      res.json(graphic)
+    })
 }
