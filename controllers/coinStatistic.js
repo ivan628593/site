@@ -62,6 +62,7 @@ exports.graphic = (req,res) => {
       graphic = JSON.parse(graphic)
       graphic.splice(0,1)
       for (var i = 0; i < graphic.length; i++) {
+        graphic[i][0]= graphic[i][0]*1000;
         graphic[i][1] = graphic[i][1].good + graphic[i][1].doa
         graphic[i].splice(2,2)
       }

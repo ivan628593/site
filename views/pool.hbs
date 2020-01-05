@@ -15,49 +15,49 @@
     </div>
   </div>
 </nav>
-<div class="py-5 id" id="dashboard_on">
+<div class="py-5 mx-5" id="dashboard_on">
   <div class="container-fluid">
     <div class="row">
       <div class="col">
         <div class="row">
-          <div class="col text-center">
+          <div class="col text-center border-top  py-4 ">
             {{coinStatisticData.users}}
             <h6 class="">Miners Online</h6>
           </div>
-          <div class="w-100 mt-3"></div>
-          <div class="col text-center">
-          {{num coinStatisticData.rate}}
+          <div class="w-100   border-bottom"></div>
+          <div class="col text-center  py-4 border-right ">
+            {{num coinStatisticData.rate}}
             <h6 class="">Pool hashrate</h6>
           </div>
-          <div class="col text-center">
-          {{num_without coinStatisticData.difficulty}}
+          <div class="col text-center  py-4 border-left">
+            {{num_without coinStatisticData.difficulty}}
             <h6 class="">Network difficulty</h6>
           </div>
-          <div class="w-100 mt-3">
+          <div class="w-100   border-bottom ">
           </div>
-          <div class="col text-center">
+          <div class="col text-center  py-4 border-right">
             <h6 class="">Luck</h6>
           </div>
-          <div class="col text-center">
-          {{procent coinStatisticData.fee}}
+          <div class="col text-center  py-4 border-left">
+            {{procent coinStatisticData.fee}}
             <h6 class="">Pool fee</h6>
           </div>
-          <div class="w-100 mt-3">
+          <div class="w-100   border-bottom">
           </div>
-          <div class="col text-center">
-          {{num_without coinStatisticData.local_stats.block_value}}
+          <div class="col text-center  py-4 border-right">
+            {{num_without coinStatisticData.local_stats.block_value}}
             <h6 class="">Block reward</h6>
           </div>
-          <div class="col text-center">
+          <div class="col text-center  py-4 border-left">
             {{num coinStatisticData.local_stats.attempts_to_block}}
             <h6 class="">Attempts to block </h6>
           </div>
-          <div class="w-100 mt-3">
+          <div class="w-100   border-top">
           </div>
         </div>
       </div>
       <div class="col-8 text-center">
-          <div id="container" style="width:100%; height:400px;"></div>
+        <div id="container" style="width:100%; height:400px;"></div>
         <h1 class="display-3">Display 3</h1>
       </div>
     </div>
@@ -68,68 +68,13 @@
 
 <div class="container-fluid" id="blocks_on">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 ">
       <h1 class="pt-4 pb-0">{{coinStatisticData.name}}&nbsp;</h1>
     </div>
   </div>
 </div>
 <script src="https://code.highcharts.com/highcharts.js"></script>
 
-<script>
-  var id = ["#dashboard_on", "#blocks_on" , "#miners_on" , "#howto_on" ];
-  function hide_all(){
-    id.forEach(function(item,i,id){
-      $(item).hide();
-    })
-    }
-
-hide_all();
-  $("#dashboard_on").show();
-
-  $("#dashboard").on("click", function() {
-    hide_all();
-    $("#dashboard_on").show();
-  });
-  $("#blocks").on("click", function() {
-  hide_all();
-    $("#blocks_on").show();
-  });
-  $("#miners").on("click", function() {
-  hide_all();
-    $("#miners_on").show();
-  });
-  $("#howto").on("click", function() {
-  hide_all();
-    $("#howto_on").show();
-  });
-
-
-
-
-          var myChart = Highcharts.chart('container', {
-              chart: {
-                  type: 'line'
-              },
-              title: {
-                  text:''
-              },
-              xAxis: {
-                  categories:''
-              },
-              yAxis: {
-                  title: {
-                      text:''
-                  }
-              },
-              series: [{
-                  name: 'Jane',
-                  data: [1, 0, 4]
-              }, {
-                  name: 'John',
-                  data: [5, 7, 3]
-              }]
-          });
-
-
+<script type="text/javascript" src = "/javascripts/pool.js">
 
 </script>
