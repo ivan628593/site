@@ -36,6 +36,9 @@ numeral.locale('fr');
 Handlebars.registerHelper('num',function(a){
   return new Handlebars.SafeString(numeral(a).format("0 a").toUpperCase()+"h/s");//   numeral(a).format('00.0 a');
 });
+Handlebars.registerHelper('num_without',function(a){
+  return new Handlebars.SafeString(numeral(a).format("0 a").toUpperCase()+"h");//   numeral(a).format('00.0 a');
+});
 Handlebars.registerHelper('if_eq', function(a, b, opts) {
     if (a == b) {
         return opts.fn(this);

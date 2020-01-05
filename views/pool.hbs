@@ -1,0 +1,135 @@
+<nav class="navbar navbar-expand-lg navbar-light">
+  <div class="container-fluid">
+    {{img coinStatisticData.name}}
+    <b> {{coinStatisticData.name}}</b>
+    <button class="navbar-toggler navbar-toggler-right border-0" type="button" data-toggle="collapse" data-target="#navbar5">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbar5">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item" id="dashboard"> <a class="nav-link" href="#">Dashboard</a> </li>
+        <li class="nav-item" id="blocks"> <a class="nav-link" href="#">Blocks</a> </li>
+        <li class="nav-item" id="miners"> <a class="nav-link" href="#">Miners Online</a> </li>
+        <li class="nav-item" id="howto"> <a class="nav-link" href="#">How to Start</a> </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="py-5 id" id="dashboard_on">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col">
+        <div class="row">
+          <div class="col text-center">
+            {{coinStatisticData.users}}
+            <h6 class="">Miners Online</h6>
+          </div>
+          <div class="w-100 mt-3"></div>
+          <div class="col text-center">
+          {{num coinStatisticData.rate}}
+            <h6 class="">Pool hashrate</h6>
+          </div>
+          <div class="col text-center">
+          {{num_without coinStatisticData.difficulty}}
+            <h6 class="">Network difficulty</h6>
+          </div>
+          <div class="w-100 mt-3">
+          </div>
+          <div class="col text-center">
+            <h6 class="">Luck</h6>
+          </div>
+          <div class="col text-center">
+          {{procent coinStatisticData.fee}}
+            <h6 class="">Pool fee</h6>
+          </div>
+          <div class="w-100 mt-3">
+          </div>
+          <div class="col text-center">
+          {{num_without coinStatisticData.local_stats.block_value}}
+            <h6 class="">Block reward</h6>
+          </div>
+          <div class="col text-center">
+            {{num coinStatisticData.local_stats.attempts_to_block}}
+            <h6 class="">Attempts to block </h6>
+          </div>
+          <div class="w-100 mt-3">
+          </div>
+        </div>
+      </div>
+      <div class="col-8 text-center">
+          <div id="container" style="width:100%; height:400px;"></div>
+        <h1 class="display-3">Display 3</h1>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="container-fluid" id="blocks_on">
+  <div class="row">
+    <div class="col-md-12">
+      <h1 class="pt-4 pb-0">{{coinStatisticData.name}}&nbsp;</h1>
+    </div>
+  </div>
+</div>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+
+<script>
+  var id = ["#dashboard_on", "#blocks_on" , "#miners_on" , "#howto_on" ];
+  function hide_all(){
+    id.forEach(function(item,i,id){
+      $(item).hide();
+    })
+    }
+
+hide_all();
+  $("#dashboard_on").show();
+
+  $("#dashboard").on("click", function() {
+    hide_all();
+    $("#dashboard_on").show();
+  });
+  $("#blocks").on("click", function() {
+  hide_all();
+    $("#blocks_on").show();
+  });
+  $("#miners").on("click", function() {
+  hide_all();
+    $("#miners_on").show();
+  });
+  $("#howto").on("click", function() {
+  hide_all();
+    $("#howto_on").show();
+  });
+
+var a =json.parse( {{coinStatisticData.graphic}});
+console.log(a);
+
+          var myChart = Highcharts.chart('container', {
+              chart: {
+                  type: 'line'
+              },
+              title: {
+                  text:''
+              },
+              xAxis: {
+                  categories:''
+              },
+              yAxis: {
+                  title: {
+                      text:''
+                  }
+              },
+              series: [{
+                  name: 'Jane',
+                  data: [1, 0, 4]
+              }, {
+                  name: 'John',
+                  data: [5, 7, 3]
+              }]
+          });
+
+
+
+</script>
