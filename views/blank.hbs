@@ -33,7 +33,7 @@
        </thead>
        <tbody>
         {{#each coins}}
-         <tr>
+         <tr port = "{{port}}">
            <td data-label="Name">{{img name}}</td>
            <td data-label="fullName">{{fullName}}</td>
            <td data-label="Pool hashrate">{{num rate}}</td>
@@ -49,3 +49,11 @@
      </table>
      {{/each}}
    </div>
+
+   <script>
+   $("tbody  tr").on('click',function(){
+     var port = $(this).attr("port");
+     console.log(port);
+     window.location.href='/coin/'+port; return false
+   })
+   </script>

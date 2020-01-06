@@ -15,10 +15,10 @@
     </div>
   </div>
 </nav>
-<div class="py-5 mx-5" id="dashboard_on">
+<div class="py-5 " id="dashboard_on">
   <div class="container-fluid">
     <div class="row">
-      <div class="col">
+      <div class="col-12 col-lg">
         <div class="row">
           <div class="col text-center border-top  py-4 ">
             {{coinStatisticData.users}}
@@ -56,9 +56,12 @@
           </div>
         </div>
       </div>
-      <div class="col-8 text-center">
+      <div class="col text-center col-lg mt-1">
+      <button type="button" class="btn btn-primary time" id="0">Hour</button>
+      <button type="button" class="btn btn-primary time" id="1">Day</button>
+      <button type="button" class="btn btn-primary time" id="2">Week</button>
+      <button type="button" class="btn btn-primary time" id="3">Year</button>
         <div id="container" style="width:100%; height:400px;"></div>
-        <h1 class="display-3">Display 3</h1>
       </div>
     </div>
   </div>

@@ -28,75 +28,89 @@ $("#howto").on("click", function() {
 
 var port = document.location.pathname;
 port = port.split("/");
-port = port[port.length-1];
+port = port[port.length - 1];
 
-document.addEventListener('DOMContentLoaded', function () {
-var options = {
-            chart: {
-                zoomType: 'x'
-            },
-            title: {
-                text: ''
-            },
-            subtitle: {
-                text: document.ontouchstart === undefined ?
-                    'Click and drag in the plot area to zoom in' : 'Pinch the chart to zoom in'
-            },
-            xAxis: {
-                type: 'datetime'
-            },
-            yAxis: {
-                title: {
-                    text: 'Exchange rate'
-                }
-            },
-            legend: {
-                enabled: false
-            },
-            plotOptions: {
-                area: {
-                    fillColor: {
-                        linearGradient: {
-                            x1: 0,
-                            y1: 0,
-                            x2: 0,
-                            y2: 1
-                        },
-                        stops: [
-                            [0, Highcharts.getOptions().colors[0]],
-                            [1, Highcharts.Color(Highcharts.getOptions().colors[0]).setOpacity(0).get('rgba')]
-                        ]
-                    },
-                    marker: {
-                        radius: 2
-                    },
-                    lineWidth: 1,
-                    states: {
-                        hover: {
-                            lineWidth: 1
-                        }
-                    },
-                    threshold: null
-                }
-            },
+document.addEventListener('DOMContentLoaded', function() {
+  var options = {
+    chart: {
+      zoomType: 'x'
+    },
+    title: {
+      text: ''
+    },
+    subtitle: {
+      text: document.ontouchstart === undefined ?
+        'Click and drag in the plot area to zoom in' : 'Pinch the chart to zoom in'
+    },
+    xAxis: {
+      type: 'datetime'
+    },
+    yAxis: {
+      title: {
+        text: 'Exchange rate'
+      }
+    },
+    legend: {
+      enabled: false
+    },
+    plotOptions: {
+      area: {
+        fillColor: {
+          linearGradient: {
+            x1: 0,
+            y1: 0,
+            x2: 0,
+            y2: 1
+          },
+          stops: [
+            [0, Highcharts.getOptions().colors[0]],
+            [1, Highcharts.Color(Highcharts.getOptions().colors[0]).setOpacity(0).get('rgba')]
+          ]
+        },
+        marker: {
+          radius: 2
+        },
+        lineWidth: 1,
+        states: {
+          hover: {
+            lineWidth: 1
+          }
+        },
+        threshold: null
+      }
+    },
 
-            series: [{
-                type: 'area',
-                name: '',
+    series: [{
+      type: 'area',
+      name: '',
 
-            }]
-        }
+    }]
+  }
 
+  let k = 0;
+
+  update(k);
+  $(".time").on('click',function(){
+    var id= $(this).attr("id");
+    k=id;
+    update(k);
+
+  });
+
+  function update(a) {
 
     $.ajax({
-        url: '/graphic/'+port+'/period/0',
-        success: function(data) {
-            options.series[0].type= "spline";
-            options.series[0].data = data;
-            Highcharts.chart('container', options);
-          }
-    });
-  });
+      url: '/graphic/' + port + '/period/' + a,
+      success: function(data) {
+        options.series[0].type = "spline";
+        options.series[0].data = data;
+        Highcharts.chart('container', options);
+      }
+    })
+  }
+
+    setInterval(function(){update(k);},300000);
+})
 
 // window.onload = function() {
 //
