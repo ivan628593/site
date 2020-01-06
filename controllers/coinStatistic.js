@@ -6,22 +6,22 @@ exports.getCoinStatisticData = function (req,res) {
  let promise = []
  let coin = coins.find(item => item.port == req.params.id)
  promise[0] = new Promise(function(resolve, reject) {
-     request('http://p2p-ekb.xyz:'+coin.port+'/rate', (err, response, rate) => {
+     request(`http://p2p-ekb.xyz:${coin.port}/rate`, (err, response, rate) => {
        resolve({name:'rate',value:rate})
      })
  });
  promise[1] = new Promise(function(resolve, reject) {
-     request('http://p2p-ekb.xyz:'+coin.port+'/difficulty', (err, response, difficulty) => {
+     request(`http://p2p-ekb.xyz:${coin.port}/difficulty`, (err, response, difficulty) => {
        resolve({name:'difficulty',value:difficulty})
      })
  });
  promise[2] = new Promise(function(resolve, reject) {
-     request('http://p2p-ekb.xyz:'+coin.port+'/fee', (err, response, fee) => {
+     request(`http://p2p-ekb.xyz:${coin.port}/fee`, (err, response, fee) => {
        resolve({name:'fee',value:fee})
      })
  });
  promise[3] = new Promise(function(resolve, reject) {
-     request('http://p2p-ekb.xyz:'+coin.port+'/local_stats', (err, response, local_stats) => {
+     request(`http://p2p-ekb.xyz:${coin.port}/local_stats`, (err, response, local_stats) => {
        resolve({name:'local_stats',value:local_stats})
      })
  });
@@ -62,8 +62,20 @@ exports.graphic = (req,res) => {
       graphic = JSON.parse(graphic)
       graphic.splice(0,1)
       for (var i = 0; i < graphic.length; i++) {
+        if(graphic[i][1] == null){
+            graphic[i][1] = {}
+        }
+        else if(graphic[i][1].good === undefined){
+            graphic[i][1].good = 0
+        }
+        else if (graphic[i][1].doa === undefined) {
+          graphic[i][1].doa = 0
+        }
+        else if (graphic[i][1].orphan === undefined) {
+          graphic[i][1].orphan = 0
+        }
         graphic[i][0]= graphic[i][0]*1000;
-        graphic[i][1] = graphic[i][1].good + graphic[i][1].doa
+        graphic[i][1] = graphic[i][1].good + graphic[i][1].doa + graphic[i][1].orphan
         graphic[i].splice(2,2)
       }
       res.json(graphic)
