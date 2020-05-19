@@ -27,8 +27,12 @@ exports.getCoinStatisticData = function (req,res) {
  });
  promise[4] = new Promise(function(resolve, reject) {
    request('http://p2p-ekb.xyz:'+coin.port+'/users', (err, response, users) => {
-     users = users.length -1
-     resolve({name:'users',value:users})
+    users = JSON.parse(users)
+    let count  = 0;
+    for (var i  in users) {
+        count++
+    }
+     resolve({name:'users',value:count - 1 }) 
    })
 
  });
@@ -49,8 +53,13 @@ exports.getCoinStatisticData = function (req,res) {
    coinStatisticData.fullName = coin.fullName
    coinStatisticData.algoritm = coin.algoritm
    coinStatisticData.name = coin.name
+<<<<<<< HEAD
  //res.json(coinStatisticData)
   res.render('pool',{coinStatisticData})
+=======
+  res.json(coinStatisticData)
+   // res.render('pool',{coinStatisticData})
+>>>>>>> a9040cae9b53585aafeda7e56d5f38b2c44a7aa7
  })
 }
 
