@@ -67,11 +67,7 @@ exports.list = function (req,res) {
           }
         }
       // res.json(data)
-<<<<<<< HEAD
       //res.json(data)
          res.render('blank',{data})
-=======
-        res.render('blank',{data})
->>>>>>> a9040cae9b53585aafeda7e56d5f38b2c44a7aa7
     });
 }

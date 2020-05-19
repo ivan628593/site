@@ -32,7 +32,7 @@ exports.getCoinStatisticData = function (req,res) {
     for (var i  in users) {
         count++
     }
-     resolve({name:'users',value:count - 1 }) 
+     resolve({name:'users',value:count - 1 })
    })
 
  });
@@ -53,13 +53,8 @@ exports.getCoinStatisticData = function (req,res) {
    coinStatisticData.fullName = coin.fullName
    coinStatisticData.algoritm = coin.algoritm
    coinStatisticData.name = coin.name
-<<<<<<< HEAD
  //res.json(coinStatisticData)
   res.render('pool',{coinStatisticData})
-=======
-  res.json(coinStatisticData)
-   // res.render('pool',{coinStatisticData})
->>>>>>> a9040cae9b53585aafeda7e56d5f38b2c44a7aa7
  })
 }
 
