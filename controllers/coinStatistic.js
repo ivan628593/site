@@ -49,8 +49,8 @@ exports.getCoinStatisticData = function (req,res) {
    coinStatisticData.fullName = coin.fullName
    coinStatisticData.algoritm = coin.algoritm
    coinStatisticData.name = coin.name
-//   res.json(coinStatisticData)
-   res.render('pool',{coinStatisticData})
+ //res.json(coinStatisticData)
+  res.render('pool',{coinStatisticData})
  })
 }
 

@@ -9,7 +9,7 @@ exports.list = function (req,res) {
               // if(err)
               //   console.log(err,{port:coin.port});
                 //coin.rate = rate
-                request('http://p2p-ekb.xyz:'+url.port+'/users', (err, response, users) => {
+                request('http://p2p-ekb.xyz:' + url.port+'/users', (err, response, users) => {
                 // if(err)
                 //   // console.log(err,{port:coin.port});
                   //coin.users = users.length -1
@@ -48,11 +48,13 @@ exports.list = function (req,res) {
         let property = 'algoritm'
         // buffer[j].algoritm = result[j].algoritm
         for (let i = 0; i < result.length; i++) {
-          //console.log(i);
           buffer[k] = result[i]
-          // if(result[i].global_stats !=undefined){
-            result[i].global_stats = JSON.parse(result[i].global_stats)
-          // }
+          if (!result[i].global_stats) {
+            console.log(result[i]);
+            continue;
+          }
+              result[i].global_stats = JSON.parse(result[i].global_stats)
+
           k++
           if(result[i+1] === undefined   ||  result[i].algoritm !== result[i+1].algoritm){
               // data[j].algoritm = result[i].algoritm
@@ -64,7 +66,8 @@ exports.list = function (req,res) {
               //data[j].algoritm = result[i+1].algoritm
           }
         }
+      // res.json(data)
       //res.json(data)
-        res.render('blank',{data})
+         res.render('blank',{data})
     });
 }
